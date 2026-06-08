@@ -1,39 +1,33 @@
 import pgzrun
-from pgzero.actor import Actor
-import pylance
-import pygame
+import pgzero.screen
 
 # Window Size
 WIDTH = 800
 HEIGHT = 600
 
 # Actors
-bee = Actor("bee")
-flower = Actor("flower")
-
-# Setting Initial Positions
-bee.pos = (100, 300)
-flower.pos = (650, 300)
+bee1 = Actor("bee", (280, 345))
+flower1 = Actor("flower", (100, 245))
 
 # Draw Everything
 def draw():
     screen.clear()
     screen.fill("skyblue")
-    bee.draw()
-    flower.draw()
+    bee1.draw()
+    flower1.draw()
 
 # Keyboard Controls
 def update():
     if keyboard.left:
-        bee.x-=5
+        bee1.x-=5
     if keyboard.right:
-        bee.x+=5
+        bee1.x+=5
     if keyboard.up:
-        bee.y+=5
+        bee1.y-=5
     if keyboard.down:
-        bee.y-=5
-    if bee.colliderect("flower"):
-        screen.draw.text("Bee reached the flower!", center = (WIDTH//2, 50), fontsize = 40, color = "red")
+        bee1.y+=5
+    if bee1.colliderect(flower1):
+        print("Bee reached the flower!")
 
 # Start
 pgzrun.go()
